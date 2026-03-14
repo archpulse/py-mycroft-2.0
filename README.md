@@ -29,7 +29,7 @@ The AI will:
 ## 🚀 Quick Start
 1. Clone the repo:
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/py-mycroft.git](https://github.com/YOUR_USERNAME/py-mycroft.git)
+   git clone [https://github.com/archpulse/py-mycroft-2.0.git](https://github.com/archpulse/py-mycroft-2.0.git)
    cd py-mycroft
 Install dependencies (Requires portaudio for mic access):
 
