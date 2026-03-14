@@ -30,7 +30,7 @@ The AI will:
 1. Clone the repo:
    ```bash
    git clone https://github.com/archpulse/py-mycroft-2.0.git
-   cd py-mycroft
+   cd py-mycroft-2.0
 Install dependencies (Requires portaudio for mic access):
 
 Bash
