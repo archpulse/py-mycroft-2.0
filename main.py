@@ -1681,7 +1681,9 @@ class SettingsDialog(QDialog):
         btn_support.setObjectName("support_btn")
         btn_support.setCursor(Qt.CursorShape.PointingHandCursor)
         btn_support.clicked.connect(
-            lambda: QDesktopServices.openUrl(QUrl("https://github.com/sponsors"))
+            lambda: QDesktopServices.openUrl(
+                QUrl("https://www.patreon.com/c/archpulse/membership")
+            )
         )
         layout.addWidget(btn_support)
 
