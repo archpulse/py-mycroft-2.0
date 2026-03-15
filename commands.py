@@ -3,7 +3,9 @@ import io
 import os
 import random
 import re
+import sqlite3
 import subprocess
+import threading
 import webbrowser
 from pathlib import Path
 
@@ -17,6 +19,19 @@ _http_session = requests.Session()
 _http_session.headers.update(
     {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"}
 )
+
+_memory_conn = None
+_memory_lock = threading.Lock()
+
+
+def _get_memory_conn():
+    global _memory_conn
+    if _memory_conn is None:
+        _memory_conn = sqlite3.connect("memory.db", timeout=10, check_same_thread=False)
+        _memory_conn.execute("PRAGMA journal_mode=WAL")
+        _memory_conn.execute("PRAGMA synchronous=NORMAL")
+    return _memory_conn
+
 
 # ----------------------------
 # BASIC UTILITIES
@@ -60,7 +75,7 @@ def run_app(app_name: str):
     try:
         result = subprocess.run(["which", app_lower], capture_output=True, text=True)
         app_exists = result.returncode == 0
-    except:
+    except OSError:
         app_exists = False
 
     if app_exists:
@@ -277,7 +292,7 @@ def get_city_time_info(city: str):
                 else:
                     # Fallback: use offset calculation
                     hour = datetime.datetime.now().hour  # approximately
-            except:
+            except requests.exceptions.RequestException:
                 hour = datetime.datetime.now().hour
         else:
             # Try via geocoding for unknown cities
@@ -287,7 +302,7 @@ def get_city_time_info(city: str):
                     timeout=5,
                 )
                 hour = datetime.datetime.now().hour  # fallback
-            except:
+            except requests.exceptions.RequestException:
                 hour = datetime.datetime.now().hour
 
         # Determine the period of the day
@@ -390,46 +405,6 @@ def get_random_waiting_phrase(lang: str = "RU") -> str:
 # ----------------------------
 
 
-def capture_screen():
-    """Captures the screen and sends it to your visual stream."""
-    import io
-    import os
-    import subprocess
-
-    from PIL import Image
-
-    tmp_file = "/tmp/v.jpg"
-    debug_file = os.path.expanduser("~/debug_screen.jpg")
-
-    try:
-        # Silent screenshot
-        subprocess.run(
-            ["spectacle", "-b", "-n", "-o", tmp_file],
-            stderr=subprocess.DEVNULL,
-            stdout=subprocess.DEVNULL,
-            check=True,
-        )
-
-        with Image.open(tmp_file) as img:
-            if img.mode != "RGB":
-                img = img.convert("RGB")
-
-            # AGGRESSIVE COMPRESSION: turn screenshot into a lightweight video frame
-            img.thumbnail((1024, 1024), Image.Resampling.LANCZOS)
-
-            img_byte_arr = io.BytesIO()
-            img.save(img_byte_arr, format="JPEG", quality=60)
-            data = img_byte_arr.getvalue()
-
-            # Save a copy for verification
-            img.save(debug_file, format="JPEG", quality=60)
-
-        os.remove(tmp_file)
-        return data
-    except Exception as e:
-        return f"Error capturing screen: {e}"
-
-
 # ----------------------------
 # ENTERTAINMENT
 # ----------------------------
@@ -478,8 +453,8 @@ def play_music(query: str):
                         if match
                         else " ".join(text.split()[:5])
                     )
-            except:
-                pass
+            except Exception as e:
+                return f"Error refining track search: {e}"
 
         webbrowser.open(
             f"https://www.youtube.com/results?search_query={actual_track.replace(' ', '+')}+official"
@@ -510,8 +485,8 @@ def play_on_spotify(query: str):
                         actual_track = (
                             f"{match.group(1).strip()} {match.group(2).strip()}"
                         )
-            except:
-                pass
+            except Exception as e:
+                return f"Error refining Spotify search: {e}"
 
         webbrowser.open(
             f"https://open.spotify.com/search/{actual_track.replace(' ', '%20')}"
@@ -529,48 +504,45 @@ def play_on_spotify(query: str):
 def save_memory(category: str, key: str, value: str):
     """Saves information to long-term memory. Use to remember important facts about the user.
     Examples: save_memory('user', 'favorite_color', 'blue'), save_memory('user', 'pet_name', 'Барсик')"""
-    import sqlite3
-
     try:
-        conn = sqlite3.connect("memory.db")
-        cursor = conn.cursor()
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS facts (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                category TEXT NOT NULL,
-                key TEXT NOT NULL,
-                value TEXT NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                UNIQUE(category, key)
+        with _memory_lock:
+            conn = _get_memory_conn()
+            cursor = conn.cursor()
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS facts (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    category TEXT NOT NULL,
+                    key TEXT NOT NULL,
+                    value TEXT NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(category, key)
+                )
+            """)
+            cursor.execute(
+                "INSERT OR REPLACE INTO facts (category, key, value) VALUES (?, ?, ?)",
+                (category, key, value),
             )
-        """)
-        cursor.execute(
-            "INSERT OR REPLACE INTO facts (category, key, value) VALUES (?, ?, ?)",
-            (category, key, value),
-        )
-        conn.commit()
-        conn.close()
+            conn.commit()
         return f"✅ Remembered: {key} = {value}"
-    except Exception as e:
+    except sqlite3.Error as e:
         return f"Error saving memory: {e}"
 
 
 def get_memory(category: str, key: str):
     """Retrieves information from long-term memory."""
-    import sqlite3
-
     try:
-        conn = sqlite3.connect("memory.db")
-        cursor = conn.cursor()
-        cursor.execute(
-            "SELECT value FROM facts WHERE category = ? AND key = ?", (category, key)
-        )
-        row = cursor.fetchone()
-        conn.close()
+        with _memory_lock:
+            conn = _get_memory_conn()
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT value FROM facts WHERE category = ? AND key = ?",
+                (category, key),
+            )
+            row = cursor.fetchone()
         if row:
             return f"{key}: {row[0]}"
         return f"I do not remember information about {key}"
-    except Exception as e:
+    except sqlite3.Error as e:
         return f"Error reading memory: {e}"
 
 
@@ -596,7 +568,6 @@ TOOLS_MAPPING = {
     "set_volume": set_volume,
     "roll_dice": roll_dice,
     "coin_flip": coin_flip,
-    "capture_screen": capture_screen,
     "play_music": play_music,
     "play_on_spotify": play_on_spotify,
     "save_memory": save_memory,

@@ -141,7 +141,7 @@ TRANSLATIONS = {
         "theme_gray": "Gray",
         "lbl_dev": "Debug Mode",
         "btn_save": "Save Changes",
-        "about_title": "Py mycroft 2.0",
+        "about_title": "Py mycroft 2.1",
         "about_desc": "AI Voice Assistant powered by Google Gemini.\nReal-time voice interaction with tool execution.",
         "btn_support": "Support Project",
         "city_label": "Default City",
@@ -171,7 +171,7 @@ TRANSLATIONS = {
         "theme_gray": "Серая",
         "lbl_dev": "Режим отладки",
         "btn_save": "Сохранить",
-        "about_title": "Py mycroft 2.0",
+        "about_title": "Py mycroft 2.1",
         "about_desc": "Голосовой ИИ-ассистент на базе Google Gemini.\nГолосовое взаимодействие в реальном времени.",
         "btn_support": "Поддержать проект",
         "city_label": "Город по умолчанию",
@@ -201,7 +201,7 @@ TRANSLATIONS = {
         "theme_gray": "Сіра",
         "lbl_dev": "Режим відлагодження",
         "btn_save": "Зберегти",
-        "about_title": "Py mycroft 2.0",
+        "about_title": "Py mycroft 2.1",
         "about_desc": "Голосовий ШІ-асистент на базі Google Gemini.\nГолосова взаємодія в реальному часі.",
         "btn_support": "Підтримати проект",
         "city_label": "Місто за замовчуванням",
@@ -230,7 +230,7 @@ TRANSLATIONS = {
         "theme_light": "Hell",
         "lbl_dev": "Debug-Modus",
         "btn_save": "Speichern",
-        "about_title": "Py mycroft 2.0",
+        "about_title": "Py mycroft 2.1",
         "about_desc": "KI-Sprachassistent mit Google Gemini.\nEchtzeit-Sprachinteraktion.",
         "btn_support": "Projekt unterstützen",
         "city_label": "Standardstadt",
@@ -252,7 +252,7 @@ TRANSLATIONS = {
         "theme_light": "Claro",
         "lbl_dev": "Modo depuración",
         "btn_save": "Guardar",
-        "about_title": "Py mycroft 2.0",
+        "about_title": "Py mycroft 2.1",
         "about_desc": "Asistente de voz IA con Google Gemini.\nInteracción de voz en tiempo real.",
         "btn_support": "Apoyar proyecto",
         "city_label": "Ciudad predeterminada",
@@ -274,7 +274,7 @@ TRANSLATIONS = {
         "theme_light": "Clair",
         "lbl_dev": "Mode débogage",
         "btn_save": "Enregistrer",
-        "about_title": "Py mycroft 2.0",
+        "about_title": "Py mycroft 2.1",
         "about_desc": "Assistant vocal IA avec Google Gemini.\nInteraction vocale en temps réel.",
         "btn_support": "Soutenir le projet",
         "city_label": "Ville par défaut",
@@ -296,7 +296,7 @@ TRANSLATIONS = {
         "theme_light": "浅色",
         "lbl_dev": "调试模式",
         "btn_save": "保存",
-        "about_title": "Py mycroft 2.0",
+        "about_title": "Py mycroft 2.1",
         "about_desc": "基于Google Gemini的AI语音助手。\n实时语音交互。",
         "btn_support": "支持项目",
         "city_label": "默认城市",
@@ -318,7 +318,7 @@ TRANSLATIONS = {
         "theme_light": "ライト",
         "lbl_dev": "デバッグモード",
         "btn_save": "保存",
-        "about_title": "Py mycroft 2.0",
+        "about_title": "Py mycroft 2.1",
         "about_desc": "Google Gemini搭載のAI音声アシスタント。\nリアルタイム音声対話。",
         "btn_support": "プロジェクトを支援",
         "city_label": "デフォルト都市",
@@ -340,7 +340,7 @@ TRANSLATIONS = {
         "theme_light": "라이트",
         "lbl_dev": "디버그 모드",
         "btn_save": "저장",
-        "about_title": "Py mycroft 2.0",
+        "about_title": "Py mycroft 2.1",
         "about_desc": "Google Gemini 기반 AI 음성 어시스턴트.\n실시간 음성 상호작용.",
         "btn_support": "프로젝트 지원",
         "city_label": "기본 도시",
@@ -362,7 +362,7 @@ TRANSLATIONS = {
         "theme_light": "Claro",
         "lbl_dev": "Modo depuração",
         "btn_save": "Salvar",
-        "about_title": "Py mycroft 2.0",
+        "about_title": "Py mycroft 2.1",
         "about_desc": "Assistente de voz IA com Google Gemini.\nInteração por voz em tempo real.",
         "btn_support": "Apoiar projeto",
         "city_label": "Cidade padrão",
@@ -384,7 +384,7 @@ TRANSLATIONS = {
         "theme_light": "Chiaro",
         "lbl_dev": "Modalità debug",
         "btn_save": "Salva",
-        "about_title": "Py mycroft 2.0",
+        "about_title": "Py mycroft 2.1",
         "about_desc": "Assistente vocale IA con Google Gemini.\nInterazione vocale in tempo reale.",
         "btn_support": "Supporta il progetto",
         "city_label": "Città predefinita",
@@ -402,7 +402,7 @@ def get_output_device_index(p):
                 if info["maxOutputChannels"] > 0:
                     if "pipewire" in name or "pulse" in name:
                         return i
-            except:
+            except (OSError, KeyError):
                 continue
 
         for i in range(p.get_device_count()):
@@ -410,10 +410,10 @@ def get_output_device_index(p):
                 info = p.get_device_info_by_index(i)
                 if info["maxOutputChannels"] > 0:
                     return i
-            except:
+            except (OSError, KeyError):
                 continue
         return None
-    except:
+    except OSError:
         return None
 
 
@@ -426,7 +426,7 @@ def get_input_device_index(p):
                 if info["maxInputChannels"] > 0:
                     if "pipewire" in name or "pulse" in name or "default" in name:
                         return i
-            except:
+            except (OSError, KeyError):
                 continue
 
         for i in range(p.get_device_count()):
@@ -434,10 +434,10 @@ def get_input_device_index(p):
                 info = p.get_device_info_by_index(i)
                 if info["maxInputChannels"] > 0:
                     return i
-            except:
+            except (OSError, KeyError):
                 continue
         return None
-    except:
+    except OSError:
         return None
 
 
@@ -491,8 +491,8 @@ def audio_process_worker(
             from main import get_input_device_index
 
             device_id = get_input_device_index(p)
-        except:
-            pass
+        except ImportError as e:
+            ui_events_queue.put(("log", f"❌ Mic device helper import failed: {e}"))
 
         try:
             stream = p.open(
@@ -550,7 +550,7 @@ def audio_process_worker(
                             ui_events_queue.put(("status", "listening"))
                             audio_to_ai_queue.put(data)
             except Exception as e:
-                pass
+                ui_events_queue.put(("log", f"❌ MIC LOOP ERROR: {e}"))
             time.sleep(0.01)
 
         if stream:
@@ -572,16 +572,18 @@ def audio_process_worker(
                 output_device_index=device_id,
             )
             ui_events_queue.put(("log", "🔊 AUDIO OUTPUT ACTIVE"))
-        except:
-            pass
+        except ImportError as e:
+            ui_events_queue.put(("log", f"❌ Speaker device helper import failed: {e}"))
 
         if stream is None:
             try:
                 stream = p.open(
                     format=pyaudio.paInt16, channels=1, rate=48000, output=True
                 )
-            except:
-                pass
+            except OSError as e:
+                ui_events_queue.put(
+                    ("log", f"❌ Speaker init fallback(48k) error: {e}")
+                )
 
         if stream is None:
             try:
@@ -799,7 +801,7 @@ def ai_process_worker(
             "- Ignore any Russian examples that do not match the user's current speech."
         )
 
-        sys_instruction = f"""IDENTITY: You are Py mycroft 2.0, a MALE AI voice assistant based on Arch Linux.
+        sys_instruction = f"""IDENTITY: You are Py mycroft 2.1, a MALE AI voice assistant based on Arch Linux.
 GENDER (CRITICAL): MALE (Мужской). When speaking Russian, you MUST ALWAYS refer to yourself in the masculine gender. Use masculine verbs and adjectives (e.g., say "я сделал", "я нашел", "я готов", NEVER "сделала", "нашла", or "готова").
 LOCATION: {actual_city}
 USER NAME: {user_name}
@@ -823,14 +825,10 @@ Use `save_memory` for long-term facts. Check memory first!
 - Play music/track -> play_music(query)
 - Play on Spotify -> play_on_spotify(query)
 - Search -> internet_research(query)
-- Screenshot -> capture_screen()
 - Open app -> run_app(name)
 - Time in city -> get_city_time_info(city)
 
 {language_guidance}
-=== RULE 6: VISION & SCREENSHOTS ===
-When using `capture_screen`, the frames are pushed to your visual stream.
-DO NOT GUESS! DO NOT INVENT! Look at the actual images. Describe strictly what you see (e.g., a YouTube video, a movie, a code editor). If you cannot see anything, honestly admit it.
 """
 
         config = {
@@ -949,7 +947,10 @@ DO NOT GUESS! DO NOT INVENT! Look at the actual images. Describe strictly what y
                                     )
                                 except queue.Empty:
                                     await asyncio.sleep(0.02)
-                                except Exception:
+                                except Exception as e:
+                                    ui_events_queue.put(
+                                        ("log", f"❌ AUDIO SEND ERROR: {e}")
+                                    )
                                     break
 
                         async def receive_cloud():
@@ -1063,6 +1064,18 @@ DO NOT GUESS! DO NOT INVENT! Look at the actual images. Describe strictly what y
                                                     ]
                                                 )
 
+                                                if (
+                                                    name == "fetch_plugin_code"
+                                                    and isinstance(result, str)
+                                                ):
+                                                    code_part = Part.from_text(
+                                                        text=(
+                                                            "Plugin code preview:\n"
+                                                            f"{result}"
+                                                        )
+                                                    )
+                                                    await session.send(input=code_part)
+
                                                 # HOT RELOAD PLUGINS IF INSTALLED
                                                 if (
                                                     name == "install_plugin"
@@ -1088,8 +1101,10 @@ DO NOT GUESS! DO NOT INVENT! Look at the actual images. Describe strictly what y
                                                 audio_to_speaker_queue.put(
                                                     part.inline_data.data
                                                 )
-                            except Exception:
-                                pass
+                            except Exception as e:
+                                ui_events_queue.put(
+                                    ("log", f"❌ CLOUD RECEIVE ERROR: {e}")
+                                )
 
                         t_send = asyncio.create_task(send_audio())
                         t_recv = asyncio.create_task(receive_cloud())
@@ -1715,7 +1730,10 @@ class MemoryManager:
 
     def __init__(self, db_path=MEMORY_DB):
         self.db_path = db_path
-        self.conn = sqlite3.connect(db_path)
+        self.lock = threading.Lock()
+        self.conn = sqlite3.connect(db_path, timeout=10, check_same_thread=False)
+        self.conn.execute("PRAGMA journal_mode=WAL")
+        self.conn.execute("PRAGMA synchronous=NORMAL")
         self._init_db()
 
     def _init_db(self):
@@ -1741,54 +1759,66 @@ class MemoryManager:
         self.conn.commit()
 
     def save_fact(self, category: str, key: str, value: str):
-        cursor = self.conn.cursor()
-        cursor.execute(
-            """
-            INSERT OR REPLACE INTO facts (category, key, value) VALUES (?, ?, ?)
-        """,
-            (category, key, value),
-        )
-        self.conn.commit()
+        with self.lock:
+            cursor = self.conn.cursor()
+            try:
+                cursor.execute(
+                    """
+                    INSERT OR REPLACE INTO facts (category, key, value) VALUES (?, ?, ?)
+                """,
+                    (category, key, value),
+                )
+                self.conn.commit()
+            except sqlite3.Error:
+                self.conn.rollback()
+                raise
 
     def get_fact(self, category: str, key: str) -> str:
-        cursor = self.conn.cursor()
-        cursor.execute(
-            "SELECT value FROM facts WHERE category = ? AND key = ?", (category, key)
-        )
-        row = cursor.fetchone()
+        with self.lock:
+            cursor = self.conn.cursor()
+            cursor.execute(
+                "SELECT value FROM facts WHERE category = ? AND key = ?",
+                (category, key),
+            )
+            row = cursor.fetchone()
         return row[0] if row else None
 
     def get_all_facts(self) -> list:
-        cursor = self.conn.cursor()
-        cursor.execute("SELECT category, key, value FROM facts ORDER BY category")
-        return cursor.fetchall()
+        with self.lock:
+            cursor = self.conn.cursor()
+            cursor.execute("SELECT category, key, value FROM facts ORDER BY category")
+            return cursor.fetchall()
 
     def get_all_facts_with_id(self) -> list:
         """Returns all facts with their IDs for deletion."""
-        cursor = self.conn.cursor()
-        cursor.execute(
-            "SELECT id, category, key, value FROM facts ORDER BY category, key"
-        )
-        return cursor.fetchall()
+        with self.lock:
+            cursor = self.conn.cursor()
+            cursor.execute(
+                "SELECT id, category, key, value FROM facts ORDER BY category, key"
+            )
+            return cursor.fetchall()
 
     def delete_fact(self, fact_id: int):
         """Deletes a fact by its ID."""
-        cursor = self.conn.cursor()
-        cursor.execute("DELETE FROM facts WHERE id = ?", (fact_id,))
-        self.conn.commit()
+        with self.lock:
+            cursor = self.conn.cursor()
+            cursor.execute("DELETE FROM facts WHERE id = ?", (fact_id,))
+            self.conn.commit()
 
     def delete_facts_by_ids(self, ids: list):
         """Deletes multiple facts by their IDs."""
-        cursor = self.conn.cursor()
-        for fact_id in ids:
-            cursor.execute("DELETE FROM facts WHERE id = ?", (fact_id,))
-        self.conn.commit()
+        with self.lock:
+            cursor = self.conn.cursor()
+            for fact_id in ids:
+                cursor.execute("DELETE FROM facts WHERE id = ?", (fact_id,))
+            self.conn.commit()
 
     def clear_all(self):
         """Clears all facts from memory."""
-        cursor = self.conn.cursor()
-        cursor.execute("DELETE FROM facts")
-        self.conn.commit()
+        with self.lock:
+            cursor = self.conn.cursor()
+            cursor.execute("DELETE FROM facts")
+            self.conn.commit()
 
     def get_db_size_mb(self) -> float:
         """Returns the database file size in MB."""
@@ -1796,7 +1826,7 @@ class MemoryManager:
             if os.path.exists(self.db_path):
                 return os.path.getsize(self.db_path) / (1024 * 1024)
             return 0.0
-        except:
+        except OSError:
             return 0.0
 
     def get_user_context(self) -> str:
@@ -1993,7 +2023,7 @@ class MainWindow(QMainWindow):
 
         self.load_settings()
 
-        self.setWindowTitle("PY MYCROFT 2.0")
+        self.setWindowTitle("PY MYCROFT 2.1")
         self.setWindowIcon(QIcon("logo.png"))
         self.resize(340, 620)
         self.setMinimumSize(300, 550)
@@ -2056,7 +2086,7 @@ class MainWindow(QMainWindow):
         card_layout.addLayout(header_layout)
 
         # Title
-        self.title = QLabel("PY MYCROFT 2.0")
+        self.title = QLabel("PY MYCROFT 2.1")
         self.title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.title.setStyleSheet("""
             color: #ffffff;
@@ -2127,8 +2157,8 @@ class MainWindow(QMainWindow):
                     self.dev_mode = data.get("dev_mode", False)
                     self.default_city = data.get("city", "")
                     self.current_theme = data.get("theme", "dark")
-            except:
-                pass
+            except (json.JSONDecodeError, OSError) as e:
+                print(f"Settings load error: {e}")
 
     def save_settings(self):
         data = {}
@@ -2140,8 +2170,8 @@ class MainWindow(QMainWindow):
 
                 with open(SETTINGS_FILE, "r", encoding="utf-8") as f:
                     data = json.load(f)
-            except:
-                pass
+            except (json.JSONDecodeError, OSError) as e:
+                print(f"Settings read error: {e}")
 
         data["lang"] = self.current_lang
         data["voice"] = self.selected_voice
@@ -2154,8 +2184,8 @@ class MainWindow(QMainWindow):
 
             with open(SETTINGS_FILE, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=4)
-        except:
-            pass
+        except OSError as e:
+            print(f"Settings write error: {e}")
 
     def apply_theme(self):
         if self.current_theme == "light":
@@ -2553,8 +2583,8 @@ if __name__ == "__main__":
 
                         with open(SETTINGS_FILE, "w", encoding="utf-8") as f:
                             json.dump(settings_data, f, indent=4)
-                    except:
-                        pass
+                    except (json.JSONDecodeError, OSError) as e:
+                        print(f"Memory warning settings write error: {e}")
 
             memory.close()
     except Exception as e:

@@ -16,7 +16,7 @@ from PyQt6.QtWidgets import (
 
 WIZARD_TRANSLATIONS = {
     "EN": {
-        "page1_title": "Hello! I am Mycroft 2.0",
+        "page1_title": "Hello! I am Mycroft 2.1",
         "page1_desc": "Welcome to the autonomous AI ecosystem. I’m here to help you automate your workflow and enhance your Linux experience. Let’s start by customizing your setup.",
         "lang_lbl": "Language:",
         "theme_lbl": "Theme:",
@@ -26,17 +26,16 @@ WIZARD_TRANSLATIONS = {
         "page3_title": "Ready to talk?",
         "page3_desc": 'Almost there! Once the main window opens:\n\n1. Click the [INIT] button. I will load the language models and calibrate your microphone.\n2. Wait for the "Ready" status in the top bar.\n3. Simply say "Hey Mycroft" — I’ll hear you through my local openwakeword engine and wait for your command.',
         "page4_title": "Expanding Capabilities",
-        "page4_desc": 'My core feature is the ability to learn new skills on the fly. Simply say: "Mycroft, find and install [Plugin Name] plugin". I will search GitHub for relevant modules, audit the source code for safety using AI, and hot-load the new skill immediately. No manual downloads or restarts required.',
+        "page4_desc": "You can ask me to search GitHub plugins. I download code and run strict static checks, then save approved files to plugins/pending for manual review. I do not auto-run untrusted code.",
         "page5_title": "Launching...",
-        "page5_desc": 'Configuration complete! Py Mycroft 2.0 is now ready to serve on your system. If you have questions, check out our GitHub repository. Click "Finish" to launch the assistant!',
-
-        "page_city_title": 'Your Location',
-        "page_city_desc": 'Please enter your default city. I use this to know your current time, adjust my greeting tone (morning, day, evening), and fetch accurate local weather and news.',
-        "city_lbl": 'City:',
-        "city_placeholder": 'e.g., London, Los Angeles, Tokyo'
+        "page5_desc": 'Configuration complete! Py Mycroft 2.1 is now ready to serve on your system. If you have questions, check out our GitHub repository. Click "Finish" to launch the assistant!',
+        "page_city_title": "Your Location",
+        "page_city_desc": "Please enter your default city. I use this to know your current time, adjust my greeting tone (morning, day, evening), and fetch accurate local weather and news.",
+        "city_lbl": "City:",
+        "city_placeholder": "e.g., Los Angeles, Kyiv, Seoul",
     },
     "RU": {
-        "page1_title": "Привет! Я Mycroft 2.0",
+        "page1_title": "Привет! Я Mycroft 2.1",
         "page1_desc": "Добро пожаловать в автономную ИИ-экосистему. Я здесь, чтобы помочь автоматизировать ваш рабочий процесс и улучшить опыт работы в Linux. Давайте начнем с настройки.",
         "lang_lbl": "Язык:",
         "theme_lbl": "Тема:",
@@ -46,17 +45,16 @@ WIZARD_TRANSLATIONS = {
         "page3_title": "Готовы к разговору?",
         "page3_desc": 'Почти готово! Как только откроется главное окно:\n\n1. Нажмите кнопку [INIT]. Я загружу языковые модели и откалибрую микрофон.\n2. Дождитесь статуса "System Online" наверху.\n3. Просто скажите "Hey Mycroft" — я услышу вас через локальный движок openwakeword и буду ждать команду.',
         "page4_title": "Расширение возможностей",
-        "page4_desc": 'Моя главная фишка — умение учиться новым навыкам на лету. Просто скажите: "Mycroft, найди и установи плагин [Название плагина]". Я найду нужные модули на GitHub, проверю код на безопасность с помощью ИИ и сразу загружу новый навык. Без ручных загрузок и перезапусков.',
+        "page4_desc": "Вы можете попросить меня искать плагины на GitHub. Я скачиваю код, запускаю строгую статическую проверку и сохраняю безопасные файлы в plugins/pending для ручной проверки. Непроверенный код я автоматически не запускаю.",
         "page5_title": "Запуск...",
-        "page5_desc": 'Настройка завершена! Py Mycroft 2.0 готов к работе. Если у вас есть вопросы, загляните в наш репозиторий на GitHub. Нажмите "Готово", чтобы запустить ассистента!',
-
-        "page_city_title": 'Ваша локация',
-        "page_city_desc": 'Пожалуйста, введите ваш город по умолчанию. Это нужно, чтобы я знал ваше местное время, подстраивал тон приветствия (утро, день, вечер) и давал точные прогнозы погоды и новости.',
-        "city_lbl": 'Город:',
-        "city_placeholder": 'например, Москва, Санкт-Петербург, Казань'
+        "page5_desc": 'Настройка завершена! Py Mycroft 2.1 готов к работе. Если у вас есть вопросы, загляните в наш репозиторий на GitHub. Нажмите "Готово", чтобы запустить ассистента!',
+        "page_city_title": "Ваша локация",
+        "page_city_desc": "Пожалуйста, введите ваш город по умолчанию. Это нужно, чтобы я знал ваше местное время, подстраивал тон приветствия (утро, день, вечер) и давал точные прогнозы погоды и новости.",
+        "city_lbl": "Город:",
+        "city_placeholder": "например, Лос-Анджелес, Киев, Seoul",
     },
     "UA": {
-        "page1_title": "Привіт! Я Mycroft 2.0",
+        "page1_title": "Привіт! Я Mycroft 2.1",
         "page1_desc": "Ласкаво просимо до автономної ШІ-екосистеми. Я тут, щоб допомогти автоматизувати ваш робочий процес і покращити досвід роботи в Linux. Почнімо з налаштування.",
         "lang_lbl": "Мова:",
         "theme_lbl": "Тема:",
@@ -66,17 +64,16 @@ WIZARD_TRANSLATIONS = {
         "page3_title": "Готові до розмови?",
         "page3_desc": 'Майже готово! Щойно відкриється головне вікно:\n\n1. Натисніть кнопку [INIT]. Я завантажу мовні моделі та відкалібрую мікрофон.\n2. Дочекайтеся статусу "System Online" нагорі.\n3. Просто скажіть "Hey Mycroft" — я почую вас через локальний рушій openwakeword і чекатиму на команду.',
         "page4_title": "Розширення можливостей",
-        "page4_desc": 'Моя головна фішка — вміння вчитися новим навичкам на льоту. Просто скажіть: "Mycroft, знайди і встанови плагін [Назва плагіна]". Я знайду потрібні модулі на GitHub, перевірю код на безпеку за допомогою ШІ та одразу завантажу нову навичку. Без ручних завантажень і перезапусків.',
+        "page4_desc": "Ви можете попросити мене шукати плагіни на GitHub. Я завантажую код, виконую сувору статичну перевірку та зберігаю безпечні файли у plugins/pending для ручного перегляду. Неперевірений код я автоматично не запускаю.",
         "page5_title": "Запуск...",
-        "page5_desc": 'Налаштування завершено! Py Mycroft 2.0 готовий до роботи. Якщо у вас є питання, загляньте в наш репозиторий на GitHub. Натисніть "Готово", щоб запустити асистента!',
-
-        "page_city_title": 'Ваша локація',
-        "page_city_desc": 'Будь ласка, введіть ваше місто за замовчуванням. Це потрібно, щоб я знав ваш місцевий час, підлаштовував тон вітання (ранок, день, вечір) і давав точні прогнози погоди та новини.',
-        "city_lbl": 'Місто:',
-        "city_placeholder": 'наприклад, Київ, Львів, Дніпро'
+        "page5_desc": 'Налаштування завершено! Py Mycroft 2.1 готовий до роботи. Якщо у вас є питання, загляньте в наш репозиторий на GitHub. Натисніть "Готово", щоб запустити асистента!',
+        "page_city_title": "Ваша локація",
+        "page_city_desc": "Будь ласка, введіть ваше місто за замовчуванням. Це потрібно, щоб я знав ваш місцевий час, підлаштовував тон вітання (ранок, день, вечір) і давав точні прогнози погоди та новини.",
+        "city_lbl": "Місто:",
+        "city_placeholder": "наприклад, Лос-Анджелес, Київ, Seoul",
     },
     "DE": {
-        "page1_title": "Hallo! Ich bin Mycroft 2.0",
+        "page1_title": "Hallo! Ich bin Mycroft 2.1",
         "page1_desc": "Willkommen im autonomen KI-Ökosystem. Ich bin hier, um Ihren Workflow zu automatisieren. Beginnen wir mit der Einrichtung.",
         "lang_lbl": "Sprache:",
         "theme_lbl": "Thema:",
@@ -86,17 +83,16 @@ WIZARD_TRANSLATIONS = {
         "page3_title": "Bereit zum Reden?",
         "page3_desc": 'Fast fertig! Im Hauptfenster:\n\n1. Klicken Sie auf [INIT].\n2. Warten Sie auf "System Online".\n3. Sagen Sie "Hey Mycroft".',
         "page4_title": "Funktionen erweitern",
-        "page4_desc": 'Sagen Sie einfach: "Mycroft, installiere ein Plugin für [Wort]". Ich werde GitHub durchsuchen und es installieren.',
+        "page4_desc": "Sie koennen mich bitten, Plugins auf GitHub zu suchen. Ich lade den Code, pruefe ihn statisch und speichere ihn in plugins/pending zur manuellen Freigabe. Ungeprueften Code starte ich nicht automatisch.",
         "page5_title": "Starten...",
-        "page5_desc": 'Einrichtung abgeschlossen! Py Mycroft 2.0 ist bereit. Klicken Sie auf "Finish".',
-
-        "page_city_title": 'Ihr Standort',
-        "page_city_desc": 'Bitte geben Sie Ihre Standardstadt ein. Ich verwende dies für Wetter, Nachrichten und die Anpassung meiner Begrüßung an Ihre Tageszeit.',
-        "city_lbl": 'Stadt:',
-        "city_placeholder": 'z. B. Berlin, München, Hamburg'
+        "page5_desc": 'Einrichtung abgeschlossen! Py Mycroft 2.1 ist bereit. Klicken Sie auf "Finish".',
+        "page_city_title": "Ihr Standort",
+        "page_city_desc": "Bitte geben Sie Ihre Standardstadt ein. Ich verwende dies für Wetter, Nachrichten und die Anpassung meiner Begrüßung an Ihre Tageszeit.",
+        "city_lbl": "Stadt:",
+        "city_placeholder": "z. B. Los Angeles, Kyjiw, Seoul",
     },
     "ES": {
-        "page1_title": "¡Hola! Soy Mycroft 2.0",
+        "page1_title": "¡Hola! Soy Mycroft 2.1",
         "page1_desc": "Bienvenido al ecosistema de IA autónoma. Estoy aquí para ayudar a automatizar su flujo de trabajo. Comencemos con la configuración.",
         "lang_lbl": "Idioma:",
         "theme_lbl": "Tema:",
@@ -106,17 +102,16 @@ WIZARD_TRANSLATIONS = {
         "page3_title": "¿Listo para hablar?",
         "page3_desc": '¡Casi listo! En la ventana principal:\n\n1. Haga clic en [INIT].\n2. Espere a "System Online".\n3. Diga "Hey Mycroft".',
         "page4_title": "Ampliando capacidades",
-        "page4_desc": 'Simplemente diga: "Mycroft, instala un plugin para [Palabra]". Buscaré en GitHub y lo instalaré.',
+        "page4_desc": "Puede pedirme buscar plugins en GitHub. Descargo el codigo, aplico verificacion estatica estricta y guardo resultados en plugins/pending para revision manual. No ejecuto codigo no verificado automaticamente.",
         "page5_title": "Lanzamiento...",
-        "page5_desc": '¡Configuración completa! Py Mycroft 2.0 está listo. Haga clic en "Finish".',
-
-        "page_city_title": 'Su ubicación',
-        "page_city_desc": 'Ingrese su ciudad predeterminada. Utilizo esto para conocer su hora actual, ajustar mi tono de saludo y obtener el clima y las noticias locales precisas.',
-        "city_lbl": 'Ciudad:',
-        "city_placeholder": 'p. ej., Madrid, Barcelona, Valencia'
+        "page5_desc": '¡Configuración completa! Py Mycroft 2.1 está listo. Haga clic en "Finish".',
+        "page_city_title": "Su ubicación",
+        "page_city_desc": "Ingrese su ciudad predeterminada. Utilizo esto para conocer su hora actual, ajustar mi tono de saludo y obtener el clima y las noticias locales precisas.",
+        "city_lbl": "Ciudad:",
+        "city_placeholder": "p. ej., Los Angeles, Kyiv, Seoul",
     },
     "FR": {
-        "page1_title": "Bonjour ! Je suis Mycroft 2.0",
+        "page1_title": "Bonjour ! Je suis Mycroft 2.1",
         "page1_desc": "Bienvenue dans l'écosystème d'IA autonome. Je suis là pour automatiser votre flux de travail. Commençons la configuration.",
         "lang_lbl": "Langue :",
         "theme_lbl": "Thème :",
@@ -126,17 +121,16 @@ WIZARD_TRANSLATIONS = {
         "page3_title": "Prêt à parler ?",
         "page3_desc": 'Presque terminé ! Dans la fenêtre principale :\n\n1. Cliquez sur [INIT].\n2. Attendez "System Online".\n3. Dites "Hey Mycroft".',
         "page4_title": "Extension des capacités",
-        "page4_desc": 'Dites simplement : "Mycroft, installe un plugin pour [Mot]". Je chercherai sur GitHub et l\'installerai.',
+        "page4_desc": "Vous pouvez me demander de chercher des plugins sur GitHub. Je telecharge le code, j'applique une verification statique stricte et je le place dans plugins/pending pour revue manuelle. Je n'execute pas automatiquement le code non verifie.",
         "page5_title": "Lancement...",
-        "page5_desc": 'Configuration terminée ! Py Mycroft 2.0 est prêt. Cliquez sur "Finish".',
-
-        "page_city_title": 'Votre emplacement',
+        "page5_desc": 'Configuration terminée ! Py Mycroft 2.1 est prêt. Cliquez sur "Finish".',
+        "page_city_title": "Votre emplacement",
         "page_city_desc": "Veuillez entrer votre ville par défaut. J'utilise cela pour la météo, les actualités et pour adapter mes salutations à votre heure locale.",
-        "city_lbl": 'Ville :',
-        "city_placeholder": 'par ex., Paris, Lyon, Marseille'
+        "city_lbl": "Ville :",
+        "city_placeholder": "par ex., Los Angeles, Kyiv, Seoul",
     },
     "ZH": {
-        "page1_title": "你好！我是 Mycroft 2.0",
+        "page1_title": "你好！我是 Mycroft 2.1",
         "page1_desc": "欢迎来到自治人工智能生态系统。我在这里帮助自动化您的工作流程。让我们开始设置吧。",
         "lang_lbl": "语言：",
         "theme_lbl": "主题：",
@@ -146,17 +140,16 @@ WIZARD_TRANSLATIONS = {
         "page3_title": "准备好说话了吗？",
         "page3_desc": "快完成了！在主窗口中：\n\n1. 点击 [INIT]。\n2. 等待“System Online”。\n3. 说“Hey Mycroft”。",
         "page4_title": "扩展能力",
-        "page4_desc": "只需说：“Mycroft，为[词语]安装一个插件”。我会在 GitHub 上搜索并安装它。",
+        "page4_desc": "你可以让我在 GitHub 上搜索插件。我会下载代码、执行严格静态检查，并把结果保存到 plugins/pending 供人工审核。未审核代码不会自动执行。",
         "page5_title": "启动...",
-        "page5_desc": "设置完成！Py Mycroft 2.0 已准备就绪。点击“Finish”。",
-
-        "page_city_title": '您的位置',
-        "page_city_desc": '请输入您的默认城市。我用它来了解您的当前时间，调整我的问候语气（早晨、白天、晚上），并获取准确的当地天气和新闻。',
-        "city_lbl": '城市：',
-        "city_placeholder": '例如：北京，上海，广州'
+        "page5_desc": "设置完成！Py Mycroft 2.1 已准备就绪。点击“Finish”。",
+        "page_city_title": "您的位置",
+        "page_city_desc": "请输入您的默认城市。我用它来了解您的当前时间，调整我的问候语气（早晨、白天、晚上），并获取准确的当地天气和新闻。",
+        "city_lbl": "城市：",
+        "city_placeholder": "例如：洛杉矶，基辅，Seoul",
     },
     "JA": {
-        "page1_title": "こんにちは！Mycroft 2.0 です",
+        "page1_title": "こんにちは！Mycroft 2.1 です",
         "page1_desc": "自律型AIエコシステムへようこそ。ワークフローの自動化をお手伝いします。セットアップを始めましょう。",
         "lang_lbl": "言語:",
         "theme_lbl": "テーマ:",
@@ -166,17 +159,16 @@ WIZARD_TRANSLATIONS = {
         "page3_title": "話す準備はできましたか？",
         "page3_desc": "ほぼ完了です！メインウィンドウで：\n\n1. [INIT] をクリックします。\n2. 「System Online」を待ちます。\n3. 「Hey Mycroft」と言います。",
         "page4_title": "機能の拡張",
-        "page4_desc": "「Mycroft、[言葉]のプラグインをインストールして」と言うだけです。GitHubを検索してインストールします。",
+        "page4_desc": "GitHubのプラグイン検索を依頼できます。コードを取得して厳格な静的チェックを行い、plugins/pending に保存して手動確認します。未確認コードは自動実行しません。",
         "page5_title": "起動中...",
-        "page5_desc": "セットアップ完了！Py Mycroft 2.0 の準備ができました。「Finish」をクリックしてください。",
-
-        "page_city_title": 'あなたの場所',
-        "page_city_desc": 'デフォルトの都市を入力してください。これは、あなたの現在時刻を知り、挨拶のトーン（朝、昼、夜）を調整し、正確な現地の天気やニュースを取得するために使用されます。',
-        "city_lbl": '都市:',
-        "city_placeholder": '例：東京、大阪、京都'
+        "page5_desc": "セットアップ完了！Py Mycroft 2.1 の準備ができました。「Finish」をクリックしてください。",
+        "page_city_title": "あなたの場所",
+        "page_city_desc": "デフォルトの都市を入力してください。これは、あなたの現在時刻を知り、挨拶のトーン（朝、昼、夜）を調整し、正確な現地の天気やニュースを取得するために使用されます。",
+        "city_lbl": "都市:",
+        "city_placeholder": "例：ロサンゼルス、キエフ、Seoul",
     },
     "KO": {
-        "page1_title": "안녕하세요! Mycroft 2.0입니다",
+        "page1_title": "안녕하세요! Mycroft 2.1입니다",
         "page1_desc": "자율 AI 생태계에 오신 것을 환영합니다. 워크플로우 자동화를 돕겠습니다. 설정을 시작하겠습니다.",
         "lang_lbl": "언어:",
         "theme_lbl": "테마:",
@@ -186,17 +178,16 @@ WIZARD_TRANSLATIONS = {
         "page3_title": "말할 준비가 되셨나요?",
         "page3_desc": '거의 다 되었습니다! 메인 창에서:\n\n1. [INIT]을 클릭합니다.\n2. "System Online"을 기다립니다.\n3. "Hey Mycroft"라고 말합니다.',
         "page4_title": "기능 확장",
-        "page4_desc": '"Mycroft, [단어] 플러그인 설치해줘"라고 말하기만 하면 됩니다. GitHub를 검색하여 설치하겠습니다.',
+        "page4_desc": "GitHub plugin geomsageul butakhal su isseoyo. Kodeureul daunbatgo eomgyeokhan jeongjeok geomsa hu plugins/pendinge jeojanghamnida. geomjeungdoen anneun kodeuneun jadongeuro silhaenghaji anseumnida.",
         "page5_title": "시작...",
-        "page5_desc": '설정 완료! Py Mycroft 2.0이 준비되었습니다. "Finish"를 클릭하세요.',
-
-        "page_city_title": '위치',
-        "page_city_desc": '기본 도시를 입력하세요. 저는 이것을 사용하여 현재 시간을 알고, 인사 톤(아침, 낮, 저녁)을 조정하고, 정확한 현지 날씨와 뉴스를 가져옵니다.',
-        "city_lbl": '도시:',
-        "city_placeholder": '예: 서울, 부산, 인천'
+        "page5_desc": '설정 완료! Py Mycroft 2.1이 준비되었습니다. "Finish"를 클릭하세요.',
+        "page_city_title": "위치",
+        "page_city_desc": "기본 도시를 입력하세요. 저는 이것을 사용하여 현재 시간을 알고, 인사 톤(아침, 낮, 저녁)을 조정하고, 정확한 현지 날씨와 뉴스를 가져옵니다.",
+        "city_lbl": "도시:",
+        "city_placeholder": "예: 로스앤젤레스, 키예프, Seoul",
     },
     "PT": {
-        "page1_title": "Olá! Eu sou Mycroft 2.0",
+        "page1_title": "Olá! Eu sou Mycroft 2.1",
         "page1_desc": "Bem-vindo ao ecossistema de IA autônoma. Estou aqui para ajudar a automatizar seu fluxo de trabalho. Vamos começar a configuração.",
         "lang_lbl": "Idioma:",
         "theme_lbl": "Tema:",
@@ -206,17 +197,16 @@ WIZARD_TRANSLATIONS = {
         "page3_title": "Pronto para falar?",
         "page3_desc": 'Quase lá! Na janela principal:\n\n1. Clique em [INIT].\n2. Aguarde "System Online".\n3. Diga "Hey Mycroft".',
         "page4_title": "Expandindo Recursos",
-        "page4_desc": 'Basta dizer: "Mycroft, instale um plugin para [Palavra]". Vou pesquisar no GitHub e instalá-lo.',
+        "page4_desc": "Voce pode pedir busca de plugins no GitHub. Eu baixo o codigo, aplico verificacao estatica rigorosa e salvo em plugins/pending para revisao manual. Codigo nao verificado nao e executado automaticamente.",
         "page5_title": "Iniciando...",
-        "page5_desc": 'Configuração concluída! Py Mycroft 2.0 está pronto. Clique em "Finish".',
-
-        "page_city_title": 'Sua localização',
-        "page_city_desc": 'Por favor, insira sua cidade padrão. Eu uso isso para saber sua hora atual, ajustar meu tom de saudação e buscar previsões do tempo e notícias locais precisas.',
-        "city_lbl": 'Cidade:',
-        "city_placeholder": 'ex., Lisboa, Porto, Coimbra'
+        "page5_desc": 'Configuração concluída! Py Mycroft 2.1 está pronto. Clique em "Finish".',
+        "page_city_title": "Sua localização",
+        "page_city_desc": "Por favor, insira sua cidade padrão. Eu uso isso para saber sua hora atual, ajustar meu tom de saudação e buscar previsões do tempo e notícias locais precisas.",
+        "city_lbl": "Cidade:",
+        "city_placeholder": "ex., Los Angeles, Kiev, Seoul",
     },
     "IT": {
-        "page1_title": "Ciao! Sono Mycroft 2.0",
+        "page1_title": "Ciao! Sono Mycroft 2.1",
         "page1_desc": "Benvenuto nell'ecosistema di intelligenza artificiale autonoma. Sono qui per automatizzare il tuo flusso di lavoro. Iniziamo la configurazione.",
         "lang_lbl": "Lingua:",
         "theme_lbl": "Tema:",
@@ -226,14 +216,13 @@ WIZARD_TRANSLATIONS = {
         "page3_title": "Pronto a parlare?",
         "page3_desc": 'Quasi finito! Nella finestra principale:\n\n1. Clicca su [INIT].\n2. Attendi "System Online".\n3. Dì "Hey Mycroft".',
         "page4_title": "Espansione delle capacità",
-        "page4_desc": 'Basta dire: "Mycroft, installa un plugin per [Parola]". Cercherò su GitHub e lo installerò.',
+        "page4_desc": "Puoi chiedermi di cercare plugin su GitHub. Scarico il codice, eseguo controlli statici rigorosi e salvo in plugins/pending per revisione manuale. Il codice non verificato non viene eseguito automaticamente.",
         "page5_title": "Avvio...",
-        "page5_desc": 'Configurazione completata! Py Mycroft 2.0 è pronto. Clicca su "Finish".',
-
-        "page_city_title": 'La tua posizione',
-        "page_city_desc": 'Inserisci la tua città predefinita. Lo uso per il meteo, le notizie e per adattare il mio saluto alla tua ora locale.',
-        "city_lbl": 'Città:',
-        "city_placeholder": 'ad es., Roma, Milano, Napoli'
+        "page5_desc": 'Configurazione completata! Py Mycroft 2.1 è pronto. Clicca su "Finish".',
+        "page_city_title": "La tua posizione",
+        "page_city_desc": "Inserisci la tua città predefinita. Lo uso per il meteo, le notizie e per adattare il mio saluto alla tua ora locale.",
+        "city_lbl": "Città:",
+        "city_placeholder": "ad es., Los Angeles, Kiev, Seoul",
     },
 }
 
@@ -242,7 +231,7 @@ class WelcomePage(QWizardPage):
     def __init__(self, wizard):
         super().__init__()
         self.wizard = wizard
-        self.setTitle("Hello! I am Mycroft 2.0")
+        self.setTitle("Hello! I am Mycroft 2.1")
         layout = QVBoxLayout()
 
         self.label = QLabel(
@@ -287,7 +276,6 @@ class WelcomePage(QWizardPage):
         self.theme_lbl.setText(t["theme_lbl"])
 
 
-
 class CityPage(QWizardPage):
     def __init__(self):
         super().__init__()
@@ -303,14 +291,14 @@ class CityPage(QWizardPage):
 
         self.city_lbl = QLabel("City:")
         layout.addWidget(self.city_lbl)
-        
+
         self.city_input = QLineEdit()
         self.city_input.setPlaceholderText("e.g., London, Los Angeles, Tokyo")
         layout.addWidget(self.city_input)
 
         self.setLayout(layout)
         self.registerField("city*", self.city_input)  # * makes it mandatory
-        
+
     def translate(self, lang):
         t = WIZARD_TRANSLATIONS.get(lang, WIZARD_TRANSLATIONS["EN"])
         self.setTitle(t["page_city_title"])
@@ -374,7 +362,7 @@ class PluginSystemPage(QWizardPage):
         layout = QVBoxLayout()
 
         self.label = QLabel(
-            'My core feature is the ability to learn new skills on the fly. Simply say: "Mycroft, find and install [Plugin Name] plugin". I will search GitHub for relevant modules, audit the source code for safety using AI, and hot-load the new skill immediately. No manual downloads or restarts required.'
+            "You can ask me to search GitHub plugins. I download code, run strict static checks, and save results to plugins/pending for manual review. Untrusted code is not auto-executed."
         )
         self.label.setWordWrap(True)
         self.label.setMargin(10)
@@ -394,7 +382,7 @@ class AllSetPage(QWizardPage):
         layout = QVBoxLayout()
 
         self.label = QLabel(
-            'Configuration complete! Py Mycroft 2.0 is now ready to serve on your system. If you have questions, check out our GitHub repository. Click "Finish" to launch the assistant!'
+            'Configuration complete! Py Mycroft 2.1 is now ready to serve on your system. If you have questions, check out our GitHub repository. Click "Finish" to launch the assistant!'
         )
         self.label.setWordWrap(True)
         self.label.setMargin(10)
@@ -410,17 +398,13 @@ class AllSetPage(QWizardPage):
 class SetupWizard(QWizard):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Mycroft 2.0 Setup")
-        
+        self.setWindowTitle("Mycroft 2.1 Setup")
+
         # Apply qdarktheme immediately to this window
-        
-        
-        
-        
-        
-        
-        
-        self.setStyleSheet(qdarktheme.load_stylesheet("dark") + """
+
+        self.setStyleSheet(
+            qdarktheme.load_stylesheet("dark")
+            + """
             QWizard {
                 background-color: #202124;
             }
@@ -479,14 +463,8 @@ class SetupWizard(QWizard):
                 color: #5f6368;
                 border-color: #3c4043;
             }
-        """)
-
-
-
-
-
-
-
+        """
+        )
 
         self.setWindowIcon(QIcon("logo.png"))
         self.resize(600, 450)
@@ -553,8 +531,8 @@ class SetupWizard(QWizard):
             try:
                 with open("settings.json", "r", encoding="utf-8") as f:
                     settings = json.load(f)
-            except Exception:
-                pass
+            except (json.JSONDecodeError, OSError) as e:
+                print(f"Setup settings read error: {e}")
 
         settings["lang"] = language if language else "EN"
         settings["theme"] = theme_val
@@ -575,8 +553,8 @@ def run_wizard_if_needed():
                 data = json.load(f)
                 if data.get("first_run_completed"):
                     first_run = False
-        except Exception:
-            pass
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"Wizard startup settings read error: {e}")
 
     if first_run:
         QApplication.instance().setStyleSheet(qdarktheme.load_stylesheet("dark"))

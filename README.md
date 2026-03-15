@@ -1,54 +1,54 @@
-# py-mycroft-2.0
-🚀 Py Mycroft 2.0 — An autonomous AI voice assistant powered by Google Gemini. Features a self-expanding dynamic plugin ecosystem: tell it what you need, and it finds, reviews, and installs its own skills from GitHub.
-
-
-# 🎙️ Py Mycroft 2.0
+# py-mycroft-2.1
+🚀 Py Mycroft 2.1 — An autonomous AI voice assistant powered by Google Gemini. It can search and inspect GitHub plugins, then quarantine approved code for manual review.
 
 ![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![Gemini](https://img.shields.io/badge/AI-Google%20Gemini-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Py Mycroft 2.0 is an advanced, voice-controlled AI assistant designed for Linux (optimized for Arch/KDE). It doesn't just answer questions — it executes local commands, remembers context, and **dynamically expands its own capabilities**.
+Py Mycroft 2.1 is an advanced Linux-native voice assistant (Arch/KDE friendly). It executes local commands, stores long-term memory, and expands itself by learning new plugins on demand.
 
-## 🔥 The Killer Feature: AI Package Manager
-Unlike static assistants, Mycroft 2.0 can upgrade itself. Need a weather tracker or a crypto parser? Just say:
-> *"Mycroft, find and install a crypto tracker plugin."*
-
-The AI will:
-1. Search GitHub for repositories tagged with `pymycroft-plugin`.
-2. Extract the raw Python code.
-3. **Silently review the code for security** (preventing malicious commands).
-4. Save it to the local `plugins/` directory and activate it instantly.
+## 🔥 Adaptive Plugin Workflow
+Ask for any capability, for example “Mycroft, install a crypto tracker plugin,” and the assistant:
+1. Searches GitHub for repos tagged `pymycroft-plugin`.
+2. Downloads the raw Python file.
+3. Reviews it for risky calls (e.g., `eval`, `exec`, `os.system`).
+4. Sends the downloaded code back into the Gemini 2.5 native audio/dialog session for transparent review.
+5. Stores approved code in `plugins/pending/` for manual review before any execution.
 
 ## 🛠️ Built-in Capabilities
-* **System Control:** Launch apps, control media, adjust volume.
-* **Computer Vision:** Can take screenshots (`spectacle`) and analyze your screen context.
-* **Long-Term Memory:** Uses a local SQLite database to remember important facts about you.
-* **Internet Research:** Real-time web search and summarization.
+- **System Control:** Launches apps, toggles media, and adjusts volume via `pyautogui`.
+- **Memory:** Stores facts in `memory.db` through the `save_memory` / `get_memory` tools.
+- **Internet Research & Weather:** Live DuckDuckGo/Wikipedia search plus `wttr.in` weather lookups.
+- **Entertainment:** Opens YouTube/Spotify searches, rolls dice, flips coins, etc.
+- **Dynamic Plugins:** `plugins/cyber_installer.py` runs strict static scanning and quarantines plugin code in `plugins/pending/`.
 
 ## 🚀 Quick Start
-1. Clone the repo:
+1. Clone the repository:
    ```bash
-   git clone https://github.com/archpulse/py-mycroft-2.0.git
-   cd py-mycroft-2.0
-Install dependencies (Requires portaudio for mic access):
+   git clone https://github.com/archpulse/py-mycroft-2.1.git
+   cd py-mycroft-2.1
+   ```
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate
+   ```
+3. Install dependencies (ensure `portaudio`/audio drivers are present).
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Set `GOOGLE_API_KEY` either in `.env`, the Settings UI, or during the first-run setup wizard.
+5. Run `python main.py`.
 
-Bash
-pip install -r requirements.txt
-Set your Google Gemini API Key in the UI settings or create a .env file:
+## 🧩 Writing Plugins
+Create a `.py` with functions plus `register_plugin()` returning `(tools, mapping)`. Tag the repo with `pymycroft-plugin`, and Mycroft will find it via the built-in plugin manager.
 
+(See `plugins/` for the sample `cyber_installer` plugin.)
 
-GOOGLE_API_KEY=your_api_key_here
-
-Run the core:
-
-
-
-python main.py
-
-🧩 How to Write a Plugin
-Creating a skill for Mycroft is incredibly simple. Just write a standalone .py file with your functions and a register_plugin() entry point.
-Add the pymycroft-plugin topic to your GitHub repo, and the assistant will find it automatically!
-
-
-(Check the plugins/ folder for examples).
+## 🔧 The Setup Wizard
+On first launch the PyQt wizard collects your preferences:
+- Language + theme selection with localized page copy covering English, Russian, Ukrainian, German, Spanish, French, Chinese, Japanese, Korean, and Portuguese.
+- API key entry panel that points you to Google AI Studio and ensures Gemini access is configured before the assistant starts.
+- Default city input that seeds `get_city_time_info`, weather/news lookups, and tone prompts.
+- Instructions to click `[INIT]`, wait for `System Online`, and use the local `openwakeword` “Hey Mycroft” wake phrase once the wizard finishes.
+The wizard explains that plugin discovery is assisted, but execution remains manual after quarantine review.
